@@ -32,14 +32,12 @@ An AI-powered movie recommendation service that analyzes your mood and preferenc
    pnpm dev
    ```
 
-4. **Open [http://localhost:3000](http://localhost:3000)** and start chatting with your personal movie sommelier!
-
 ## 🛠️ Tech Stack
 
 - **Frontend**: Next.js 14, TypeScript, Tailwind CSS
 - **UI Components**: Radix UI, shadcn/ui
 - **AI**: Fireworks API (Llama 3.3 70B model)
-- **Movie Data**: The Movie Database (TMDB) API
+- **Movie Data**: The Movie Database (TMDB) API (will add the anime movie for further)
 - **Package Manager**: pnpm
 
 ## 💬 How It Works
