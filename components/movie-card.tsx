@@ -73,7 +73,7 @@ export function MovieCard({ movie, genreMap }: MovieCardProps) {
 
             <div className="flex flex-wrap gap-1 mb-3">
               {movie.genre_ids.slice(0, 3).map((genreId) => (
-                <Badge key={genreId} variant="secondary" className="text-xs bg-accent/10 text-accent-foreground">
+                <Badge key={genreId} variant="destructive" className="text-xs text-accent-foreground">
                   {genreMap[genreId]}
                 </Badge>
               ))}
@@ -147,7 +147,7 @@ function MovieDetailView({ movie, genreMap }: MovieCardProps) {
             <span className="font-medium text-muted-foreground">Genres:</span>
             <div className="flex flex-wrap gap-2 mt-1">
               {movie.genre_ids.map((genreId) => (
-                <Badge key={genreId} variant="secondary" className="bg-accent/10 text-accent-foreground">
+                <Badge key={genreId} variant="destructive" className="text-accent-foreground">
                   {genreMap[genreId]}
                 </Badge>
               ))}

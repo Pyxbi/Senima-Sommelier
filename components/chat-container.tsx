@@ -19,7 +19,6 @@ interface ChatContainerProps {
     type: "user" | "assistant"
     content: string
     movies?: Movie[]
-    timestamp: Date
   }[]
   isLoading: boolean
   genreMap: Record<number, string>

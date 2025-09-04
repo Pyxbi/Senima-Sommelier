@@ -1,5 +1,5 @@
 // TMDB API integration for Cinema Sommelier - SERVER SIDE ONLY
-const TMDB_API_KEY = process.env.TMDB_API_KEY // Removed NEXT_PUBLIC_ prefix for security
+const TMDB_API_KEY = process.env.TMDB_API_KEY 
 const TMDB_BASE_URL = "https://api.themoviedb.org/3"
 
 export interface TMDBMovie {
@@ -34,7 +34,6 @@ export interface MovieSearchParams {
   vote_average_gte?: number
   with_keywords?: string
 }
-
 export async function searchMovies(params: MovieSearchParams): Promise<TMDBSearchResponse> {
   if (!TMDB_API_KEY) {
     throw new Error("TMDB API key is not configured")
@@ -64,7 +63,6 @@ export async function getMovieDetails(movieId: number) {
   }
 
   const response = await fetch(`${TMDB_BASE_URL}/movie/${movieId}?api_key=${TMDB_API_KEY}&language=en-US`)
-
   if (!response.ok) {
     throw new Error(`TMDB API error: ${response.statusText}`)
   }

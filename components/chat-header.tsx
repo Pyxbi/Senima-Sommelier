@@ -9,7 +9,7 @@ export function ChatHeader() {
             <Film className="w-6 h-6 text-primary-foreground" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-foreground">Cinema Sommelier</h1>
+            <h1 className="text-xl font-bold text-foreground">Sentnema Sommelier</h1>
             <p className="text-sm text-muted-foreground">Your AI movie pairing expert</p>
           </div>
         </div>

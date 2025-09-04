@@ -20,7 +20,6 @@ interface ChatMessage {
   type: "user" | "assistant"
   content: string
   movies?: Movie[]
-  timestamp: Date
 }
 
 const GENRE_MAP: Record<number, string> = {
@@ -52,7 +51,6 @@ export default function CinemaSommelier() {
       type: "assistant",
       content:
         "Good evening! I'm your Cinema Sommelier, here to pair the perfect film with your current mood. What kind of cinematic journey are you in the mood for today?",
-      timestamp: new Date(),
     },
   ])
   const [isLoading, setIsLoading] = useState(false)
@@ -62,7 +60,7 @@ export default function CinemaSommelier() {
       id: Date.now().toString(),
       type: "user",
       content: messageContent,
-      timestamp: new Date(),
+
     }
 
     setMessages((prev) => [...prev, userMessage])
@@ -83,53 +81,19 @@ export default function CinemaSommelier() {
 
       const data = await response.json()
 
+      // Handle conversational responses differently
       const assistantMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         type: "assistant",
-        content:
-          data.explanation ||
-          `I understand you're ${messageContent.toLowerCase()}. Let me recommend some perfect films for your mood:`,
-        movies: data.movies || [],
-        timestamp: new Date(),
+        content: data.conversational 
+          ? data.response
+          : (data.explanation || `I understand you're ${messageContent.toLowerCase()}. Let me recommend some perfect films for your mood:`),
+        movies: data.conversational ? undefined : (data.movies || []),
       }
 
       setMessages((prev) => [...prev, assistantMessage])
     } catch (error) {
       console.error("Error getting recommendations:", error)
-
-      // Fallback to mock data if API fails
-      const assistantMessage: ChatMessage = {
-        id: (Date.now() + 1).toString(),
-        type: "assistant",
-        content: `I understand you're ${messageContent.toLowerCase()}. Let me recommend some perfect films for your mood:`,
-        movies: [
-          {
-            id: 1,
-            title: "The Grand Budapest Hotel",
-            overview:
-              "A whimsical tale of adventure and friendship set in a legendary European hotel, perfect for lifting spirits with its visual charm and witty dialogue.",
-            poster_path: "/the-grand-budapest-hotel-movie-poster.png",
-            release_date: "2014-03-28",
-            vote_average: 8.1,
-            genre_ids: [35, 18, 12],
-            runtime: 99,
-          },
-          {
-            id: 2,
-            title: "Paddington 2",
-            overview:
-              "A heartwarming story that acts like a warm hug, full of genuine kindness and optimism that gently lifts the spirits without feeling cheesy.",
-            poster_path: "/paddington-2-movie-poster.jpg",
-            release_date: "2017-11-10",
-            vote_average: 7.8,
-            genre_ids: [10751, 35, 12],
-            runtime: 103,
-          },
-        ],
-        timestamp: new Date(),
-      }
-
-      setMessages((prev) => [...prev, assistantMessage])
     } finally {
       setIsLoading(false)
     }

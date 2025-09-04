@@ -20,7 +20,6 @@ interface ChatMessage {
   movies?: Movie[]
   explanation?: string
   sommelierNote?: string
-  timestamp: Date
 }
 
 interface ChatMessageProps {
@@ -56,10 +55,6 @@ export function ChatMessage({ message, genreMap }: ChatMessageProps) {
             <SommelierFeatures movies={message.movies} mood={message.content} />
           </div>
         )}
-
-        <div className="text-xs text-muted-foreground mt-2 opacity-70">
-          {message.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-        </div>
       </div>
     </div>
   )
