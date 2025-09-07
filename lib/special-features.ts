@@ -1,4 +1,4 @@
-// Special Cinema Sommelier features: Perfect Pairings, Double Features, etc.
+// Special features: Perfect Pairings, Double Features
 
 interface PerfectPairing {
   food: string
