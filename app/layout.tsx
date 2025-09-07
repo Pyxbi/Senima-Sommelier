@@ -13,9 +13,9 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: "Cinema Sommelier - AI Movie Recommendations",
+  title: "Senema Sommelier - AI Movie Recommendations",
   description: "Discover the perfect movie for your mood with AI-powered recommendations",
-  generator: "v0.app",
+  generator: "pyxbi",
 }
 
 export default function RootLayout({
