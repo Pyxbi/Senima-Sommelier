@@ -194,6 +194,7 @@ async function callFireworksAI(messages: FireworksMessage[]): Promise<string> {
  * Check if user input is conversational rather than a movie recommendation request
  * Optimized for efficient pattern matching
  */
+// need to find ways to improve it
 function isConversationalInput(input: string): boolean {
   // Convert to lowercase for case-insensitive matching
   const text = input.toLowerCase().trim();

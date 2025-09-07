@@ -1,4 +1,4 @@
-// TMDB API integration for Cinema Sommelier - SERVER SIDE ONLY
+// TMDB API integration for Cinema Sommelier
 const TMDB_API_KEY = process.env.TMDB_API_KEY 
 const TMDB_BASE_URL = "https://api.themoviedb.org/3"
 
